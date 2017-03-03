@@ -48,9 +48,14 @@
                     <h1 class="brand-name"><small>31 March 2018</small></h1>
                     <hr>
                 </div>
-                    <div class="text-center">
-                        <h4> Dear *gues_names*, <br>we invite you to come and celebrate the start of our fairytale </h4>
-                        <h1 class="brand-name"><small>Place</small></h1>
+                <div class="text-center">
+                    <h4> Dear
+                        <div *ngFor="let guest of guests; let i = index" >
+                         {{guest}}
+                         <span [hidden]="grammerSymbolAnd(i)"> &#38;</span>
+                        </div>
+                    <br>we invite you to come and celebrate the start of our fairytale </h4>
+                    <h1 class="brand-name"><small>Place</small></h1>
                         <p>
                             L&#39;Abri Adventure Camp
                             <br>
@@ -58,38 +63,38 @@
                             <br>
                             Karkloof, KZN
                             <br>
-                            <small>Please find attached map in the <a href="directions.html">Directions</a> tab</small>
+                            <small class="italic">Please find attached map in the <a href="directions.html">Directions</a> tab</small>
                         </p>
-                        <h1 class="brand-name"><small>Time</small></h1>
+                    <h1 class="brand-name"><small>Time</small></h1>
                         <p>
                             14:00 for 15:00
                         </p>
-                        <h1 class="brand-name"><small>Dress Code</small></h1>
+                    <h1 class="brand-name"><small>Dress Code</small></h1>
                         <p>
                             Semi-formal
                             <br>
-                            <small>*Please note* <br>
+                            <small class="italic">*Please note* <br>
                             Ladies - you are wwelcome to put on those pretty high hills, <br>
                             but it is advised to bring along some flats ;-) </small>
                         </p>
-                        <h1 class="brand-name"><small>RSVP</small></h1>
+                    <h1 class="brand-name"><small>RSVP</small></h1>
                         <p>
                             Please RSVP on or before 28 January 2018
                             <br>
-                            <small>*Please note* <br>
+                            <small class="italic">*Please note* <br>
                             To RSVP please go to the <a href="rsvp.html">RSVP</a> tab above and fill out the required information </small>
                         </p>
-                        <h1 class="brand-name"><small>Extra's</small></h1>
+                    <h1 class="brand-name"><small>Extra's</small></h1>
                         <p>
                             <small> Coldrink and some alchoholic beverages will be avalable, if you prefer a spesific alchol beverage, you are welcome to bring it along.
                             <br> There will not be a bar. </small> <br>
-                            <small> For more information (including accomodation info) please visit the <a href="about.html">General Information</a> tab or <a href="directions.html"> contact </a> us.</small>
+                            <small class="italic"> For more information (including accomodation info) please visit the <a href="about.html">General Information</a> tab or <a href="directions.html"> contact </a> us.</small>
                         </p>
-                    </div>
-                    </div>
-                    </div>
-                    </div>
-                    </div>
+                 </div>
+                 </div>
+            </div>
+        </div>
+    </div>
 
               
       

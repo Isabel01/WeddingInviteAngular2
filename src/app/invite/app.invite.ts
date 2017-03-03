@@ -8,22 +8,31 @@ import { RouterModule, Routes } from '@angular/router';
   styleUrls: [ '../../../node_modules/bootstrap/dist/css/bootstrap.min.css', '../app.component.css']
 })
 export class  AppComponentInvite {
-  userName;
-  password;
+   guests = [];
 
   constructor () {
     console.log("AppInvite");
+    //init guests
+    this.guests = ['Hanrich', 'Isabel', 'griet', 'griet se ma'];
 
   }
 
- authenticateUser() :void{
-  	if (this.userName === "Bella") {
-  		if(this.password === "Bella") {
-  			console.log("userAuthenticated");
-  		}
-  	}
-  	console.log("userAuthenticated 	NOT");
-  }
+  grammerSymbolAnd(index) :boolean {
+    console.log("index " + index)
+      if (this.guests.length === 1) {
+        return false;
+      }
+      if (this.guests.length === 2 && index == 1) {
+        return true;
+      }
+      if (this.guests.length > 2 && index == this.guests.length-1) {
+        console.log(this.guests.length + " index: " + index);
+        return true;
+      }
+      return false;
+   }
+
+
 
   
 }
