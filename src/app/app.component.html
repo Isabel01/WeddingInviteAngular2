@@ -1,0 +1,55 @@
+<div class="body">
+    <div class="brand">Isabel &#38; Hanrich</div>
+    <div class="address-bar">31 March 2018</div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container" [hidden]="false">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
+                <a class="navbar-brand" href="index.html">Isabel &#38; Hanrich </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/invite">Invite</a>
+                    </li>
+                    <li>
+                        <a href="about.html">General</a>
+                    </li>
+                    <li>
+                        <a href="labri.html">L&#39;abri</a>
+                    </li>
+                     <li>
+                        <a href="blog.html">RSVP</a>
+                    </li>
+                    <li>
+                        <a href="weddingParty.html">Wedding Party</a>
+                    </li>
+                    <li>
+                        <a href="directions.html">Directions</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <div class="container">
+        <div class="row">
+  				<base href="login">
+  				<router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+
+
