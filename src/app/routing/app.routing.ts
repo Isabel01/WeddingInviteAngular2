@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from '../app.component';
 import { AppComponentInvite } from '../invite/app.invite';
 import { AppComponentPageNotFound } from '../pageNotFound/app.pageNotFound';
 import { AppComponentLogin } from '../login/app.login';
