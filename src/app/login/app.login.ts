@@ -12,14 +12,16 @@ import { UserService } from '../user.service';
 export class AppComponentLogin {
   userName;
   password;
+  error;
   constructor(private router: Router,public afAuth: AngularFireAuth,public userService : UserService) { }
 
  authenticateUser() :void {
 
-     this.userService.logIn(this.userName, this.password);
-     if(this.userService.isLoggedIn()) {
+     this.userService.logIn(this.userName, this.password).then(() => {
        this.router.navigate(['/invite']);
-     }
+     }).catch(error => {
+         this.error = error.message;
+     });
   }
   
 }

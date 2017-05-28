@@ -17,12 +17,16 @@ export class UserService {
   }
 
   logIn(username : string , password : string) {
-
-  	this.afAuth.auth.signInWithEmailAndPassword(username,password).then(user => {
-     	this.loggedInUser = user;
-   	}).catch(error=>{
-     	console.log(error);
-   	})
+  	return new Promise((resolve, reject) => {
+  		this.afAuth.auth.signInWithEmailAndPassword(username,password).then(user => {
+     		this.loggedInUser = user;
+     		resolve(this.loggedInUser);
+   		}).catch(error=>{
+   			reject(error);
+     		console.log(error);
+   		})
+  	});
+  	
 
   }
 
