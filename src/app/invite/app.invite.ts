@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 @Component({
-   moduleId: module.id,
   selector: 'invite',
   templateUrl: './app.invite.html',
   styleUrls: [ '../../../node_modules/bootstrap/dist/css/bootstrap.min.css', '../app.component.css']
@@ -13,7 +12,7 @@ export class  AppComponentInvite {
   constructor () {
     console.log("AppInvite");
     //init guests
-    this.guests = ['Hanrich', 'Isabel', 'griet', 'griet se ma'];
+    this.guests = ['Hanrich', 'Isabel', 'griet'];
 
   }
 

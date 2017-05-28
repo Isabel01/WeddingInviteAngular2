@@ -15,10 +15,12 @@ import { AppComponentDirections} from './directions/app.directions';
 import { AppComponentLabri} from './labri/app.labri';
 import { AppComponentRsvp} from './rsvp/app.rsvp';
 import { AppComponentWeddingParty} from './weddingParty/app.weddingParty';
-
-
-
-
+import { firebaseConfig } from "./../environments/firebase.config"
+import { AngularFireModule } from 'angularfire2';
+import { environment } from '../environments/environment';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { UserService } from './user.service';
 
 @NgModule({
   declarations: [
@@ -31,16 +33,19 @@ import { AppComponentWeddingParty} from './weddingParty/app.weddingParty';
     AppComponentLabri,
     AppComponentRsvp,
     AppComponentWeddingParty
-  ],
+],
   imports: [
     AppModuleRoutes,
     BrowserModule,
     FormsModule,
     HttpModule,
     Ng2BootstrapModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule, // imports firebase/database, only needed for database features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
   ],
 
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

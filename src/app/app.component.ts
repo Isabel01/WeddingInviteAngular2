@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Router} from '@angular/router';
+import { AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +10,13 @@ import { Router} from '@angular/router';
   styleUrls: [ '../../node_modules/bootstrap/dist/css/bootstrap.min.css', './app.component.css']
 })
 export class AppComponent {
-   
+	validSession;
+
+	constructor(public userService : UserService) {
+
+	}
+  
+   logout() {
+   		this.userService.logOut();
+   }
 }

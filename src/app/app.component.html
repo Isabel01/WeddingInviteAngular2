@@ -4,7 +4,7 @@
 
     <!-- Navigation -->
     <nav class="navbar navbar-default" role="navigation">
-        <div class="container" [hidden]="false">
+        <div class="container" [hidden]="!userService.isLoggedIn()">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -18,7 +18,7 @@
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav" >
                     <li>
                         <a href="/invite">Invite</a>
                     </li>
@@ -36,6 +36,9 @@
                     </li>
                     <li>
                         <a href="/directions">Directions</a>
+                    </li>
+                    <li>
+                         <button type="button"  (click)="logout()" class="btn btn-default" >Logout</button>
                     </li>
                 </ul>
             </div>
