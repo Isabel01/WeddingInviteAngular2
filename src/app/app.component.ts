@@ -15,8 +15,8 @@ export class AppComponent {
 	constructor(public userService : UserService) {
 
 	}
-  
-   logout() {
+
+   logOut() {
    		this.userService.logOut();
    }
 }
