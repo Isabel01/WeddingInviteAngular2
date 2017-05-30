@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from "angularfire2/database/database";
 import { Observable, Subscription, Observer } from "rxjs";
+import { Router } from "@angular/router";
 
 @Injectable()
 export class UserService {
@@ -12,7 +13,8 @@ export class UserService {
 
   constructor(
     public afAuth: AngularFireAuth,
-    public db: AngularFireDatabase
+    public db: AngularFireDatabase,
+    private router: Router
   ) {
 
     afAuth.auth.onAuthStateChanged((user) => {
@@ -43,6 +45,7 @@ export class UserService {
     this.cancelSubscriptions();
   	this.afAuth.auth.signOut();
   	this.loggedInUser = null;
+    this.router.navigate(['/invite']);
   }
 
   isLoggedIn() : boolean {
