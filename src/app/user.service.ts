@@ -8,7 +8,7 @@ export class UserService {
 	loggedInUser;
 	subscriptions : Subscription[] = [];
 	userInformation : UserInformation;
-	observers : Observer<UserInformation>[] = [];
+	userInformationObservers : Observer<UserInformation>[] = [];
 
   constructor(
     public afAuth: AngularFireAuth,
@@ -56,9 +56,10 @@ export class UserService {
 	      let userInformationObservable = this.db.object(`/invites/${this.loggedInUser.uid}`);
 
 	      this.subscriptions.push(userInformationObservable.subscribe(userInfromation => {
-              this.observers.forEach(observer => {
+              this.userInformationObservers.forEach(observer => {
                   observer.next(userInfromation);
               });
+              this.userInformation = userInfromation;
               resolve(userInformationObservable);
 	      }));
 
@@ -70,18 +71,9 @@ export class UserService {
 
   getUserInformation() : Observable<UserInformation> {
     return new Observable<UserInformation>(observer => {
-      this.observers.push(observer);
+      this.userInformationObservers.push(observer);
+      observer.next(this.userInformation);
     });
-  }
-
-  getGuests(guests) {
-
-  	let userInformationObservable = this.db.object(`/invites/${guests}`);
-
-  	this.subscriptions.push(userInformationObservable.subscribe(userInfromation => {
-          this.userInformation = userInfromation;
-    }));
-
   }
 
   cancelSubscriptions(){
