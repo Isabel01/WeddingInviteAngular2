@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from "angularfire2/database/database";
-import { Subscription } from "rxjs";
-import {subscribeOn} from "rxjs/operator/subscribeOn";
+import { Observable, Subscription, Observer } from "rxjs";
 
 @Injectable()
 export class UserService {
 	loggedInUser;
 	subscriptions : Subscription[] = [];
+	userInformation : UserInformation;
+	observers : Observer<UserInformation>[] = [];
 
   constructor(
     public afAuth: AngularFireAuth,
@@ -17,7 +18,7 @@ export class UserService {
     afAuth.auth.onAuthStateChanged((user) => {
       if(user){
         this.loggedInUser = user;
-        this.getUserInformation();
+        this._getUserInformation();
       }
       else{
         this.loggedInUser = undefined;
@@ -48,29 +49,39 @@ export class UserService {
   	return this.loggedInUser ? true : false;
   }
 
-  getUserInformation(){
+  private _getUserInformation(){
   	return new Promise((resolve, reject) => {
 	    if(this.loggedInUser) {
 
 	      let userInformationObservable = this.db.object(`/invites/${this.loggedInUser.uid}`);
 
 	      this.subscriptions.push(userInformationObservable.subscribe(userInfromation => {
-	          console.log("User Info",userInfromation);
-	           resolve(userInformationObservable);
+              this.observers.forEach(observer => {
+                  observer.next(userInfromation);
+              });
+              resolve(userInformationObservable);
 	      }));
-	     
+
 	    }
-	
+
    	});
 
   }
 
+  getUserInformation() : Observable<UserInformation> {
+    return new Observable<UserInformation>(observer => {
+      this.observers.push(observer);
+    });
+  }
+
   getGuests(guests) {
+
   	let userInformationObservable = this.db.object(`/invites/${guests}`);
 
   	this.subscriptions.push(userInformationObservable.subscribe(userInfromation => {
-          console.log("User guests",userInfromation);
-      }));
+          this.userInformation = userInfromation;
+    }));
+
   }
 
   cancelSubscriptions(){
@@ -79,8 +90,13 @@ export class UserService {
     });
   }
 
-
-
-
 }
 
+export interface UserInformation {
+  guests : Array<Guest>
+}
+
+export interface Guest {
+  name : string,
+  surname : string
+}

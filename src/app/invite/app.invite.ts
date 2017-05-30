@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { UserService} from "../user.service"
+import { UserService, UserInformation } from "../user.service"
 
 @Component({
   selector: 'invite',
@@ -9,22 +8,27 @@ import { UserService} from "../user.service"
 })
 export class  AppComponentInvite {
    guests = [];
-   userInfo;
 
   constructor (public userService : UserService) {
     console.log("AppInvite");
     //init guests
-    this.guests = ['Hanrich', 'Isabel', 'griet'];
-    //this.userInfo = this.userService.getUserInformation().then(guest => {
+    //this.userInfo = this.userService._getUserInformation().then(guest => {
     //    this.userService.getGuests(guest.guests);
     //});
-    
+
+    userService.getUserInformation().subscribe(userInformation => {
+      this.guests = [];
+      userInformation.guests.forEach(guest => {
+        this.guests.push(guest.name);
+      });
+    });
+
 
 
   }
 
   grammerSymbolAnd(index) :boolean {
-    console.log("index " + index)
+    //console.log("index " + index)
       if (this.guests.length === 1) {
         return false;
       }
@@ -32,7 +36,7 @@ export class  AppComponentInvite {
         return true;
       }
       if (this.guests.length > 2 && index == this.guests.length-1) {
-        console.log(this.guests.length + " index: " + index);
+        //console.log(this.guests.length + " index: " + index);
         return true;
       }
       return false;
@@ -40,5 +44,5 @@ export class  AppComponentInvite {
 
 
 
-  
+
 }
