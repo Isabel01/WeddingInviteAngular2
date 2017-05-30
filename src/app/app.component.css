@@ -7,10 +7,10 @@
 .body {
     font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
     background: url('../assets/img/rustic1.jpg') no-repeat center center fixed;
-    -webkit-background-size: 100%;
-    -moz-background-size: 100%;
-    background-size: 100%;
-    -o-background-size: 100%;
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    background-size: 100% 100%;
+    -o-background-size: 100% 100%;
 }
 
 h1,
@@ -54,7 +54,7 @@ hr {
 }
 
 .img-full {
-    min-width: 100%;
+    min-width: 50%;
 }
 
 .brand-before,
@@ -423,6 +423,12 @@ footer p {
     display: none;
   }
 }
+
+.carousel-inner{
+  width:100%;
+  max-height: 500px !important;
+}
+
 /* Custom, iPhone Retina */
 @media only screen and (max-width: 767px) {
   .timeline > li:nth-child(even) {
@@ -462,3 +468,5 @@ footer p {
     display: none;
   }
 }
+
+

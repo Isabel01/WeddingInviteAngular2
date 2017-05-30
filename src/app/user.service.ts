@@ -49,15 +49,28 @@ export class UserService {
   }
 
   getUserInformation(){
-    if(this.loggedInUser) {
+  	return new Promise((resolve, reject) => {
+	    if(this.loggedInUser) {
 
-      let userInformationObservable = this.db.object(`/invites/${this.loggedInUser.uid}`);
+	      let userInformationObservable = this.db.object(`/invites/${this.loggedInUser.uid}`);
 
-      this.subscriptions.push(userInformationObservable.subscribe(userInfromation => {
-          console.log("User Info",userInfromation);
+	      this.subscriptions.push(userInformationObservable.subscribe(userInfromation => {
+	          console.log("User Info",userInfromation);
+	           resolve(userInformationObservable);
+	      }));
+	     
+	    }
+	
+   	});
+
+  }
+
+  getGuests(guests) {
+  	let userInformationObservable = this.db.object(`/invites/${guests}`);
+
+  	this.subscriptions.push(userInformationObservable.subscribe(userInfromation => {
+          console.log("User guests",userInfromation);
       }));
-
-    }
   }
 
   cancelSubscriptions(){
@@ -65,6 +78,9 @@ export class UserService {
       subscription.unsubscribe();
     });
   }
+
+
+
 
 }
 

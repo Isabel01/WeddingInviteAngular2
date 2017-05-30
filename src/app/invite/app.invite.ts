@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { UserService} from "../user.service"
 
 @Component({
   selector: 'invite',
@@ -8,11 +9,17 @@ import { RouterModule, Routes } from '@angular/router';
 })
 export class  AppComponentInvite {
    guests = [];
+   userInfo;
 
-  constructor () {
+  constructor (public userService : UserService) {
     console.log("AppInvite");
     //init guests
     this.guests = ['Hanrich', 'Isabel', 'griet'];
+    //this.userInfo = this.userService.getUserInformation().then(guest => {
+    //    this.userService.getGuests(guest.guests);
+    //});
+    
+
 
   }
 
