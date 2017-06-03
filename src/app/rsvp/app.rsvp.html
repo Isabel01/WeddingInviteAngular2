@@ -1,1 +1,80 @@
-RSVP
+<form>
+	<div class="box">
+        <div class="col-lg-12 center">
+           	<hr>
+            <h2 class="intro-text text-center">
+           		<strong>RSVP</strong>
+            </h2>
+            <hr>
+       		<h1 class="brand-name text-center"> <strong><small>Guests:</small></strong></h1>
+       		<p class="text-center"><small class="italic">
+       			Please indicate all your preferances below. Click on the icon to change your option. 
+       			<br>
+       			***NOTE*** <br>
+       			You will not be able to change your option after the 28th of January 2018
+       		</small></p>
+       		<div class="row" *ngFor='let guest of userInfo.guests; trackBy: index;'>
+
+       			<div class="col-md-12">
+       				<h3 class="intro-text text-center">
+       				{{guest.name}} {{guest.surname}} 
+       				</h3>
+       				<hr>
+       			</div>
+       			<div class="col-md-4">
+       				<h2 class="text-center">
+       					<span class="glyphicon glyphicon-ok" *ngIf="guest.rsvp && !(guest.rsvp ==='notYet')"></span>
+       					<span class="glyphicon glyphicon-remove" *ngIf="!guest.rsvp && 
+       					!(guest.rsvp === 'notYet')"></span>
+       					<span class="glyphicon glyphicon-question-sign" *ngIf="guest.rsvp === 'notYet'"></span>
+       				</h2>
+       				<h2 class="intro-text text-center" >
+       					<strong><small>
+       						Attending <br> 
+       						<span *ngIf="guest.rsvp && !(guest.rsvp ==='notYet')" >Indicated: yes</span>
+       						<span *ngIf="!guest.rsvp && !(guest.rsvp === 'notYet')" >Indicated: no</span>
+       						<span *ngIf="guest.rsvp === 'notYet'"> Not yest indicated </span>
+       					</small></strong>
+       				</h2>
+       			</div>
+       			<div class="col-md-4">
+       				<h2 class="text-center">
+	       				<span class="glyphicon glyphicon-tent" *ngIf="guest.accomodationOption === 'CAMP'"> </span>
+	       				<span class="glyphicon glyphicon-tent" *ngIf="guest.accomodationOption === 'CARAVAN'"> </span>
+	       				<span class="glyphicon glyphicon-home" *ngIf="guest.accomodationOption === 'BED'"> </span>
+	       				<span class="glyphicon glyphicon-bed" *ngIf="guest.accomodationOption === 'OWN'"> </span>
+	       				<span class="glyphicon glyphicon-question-sign" *ngIf="guest.accomodationOption === 'notYet'"></span>
+       				</h2>
+       				<h2 class="intro-text text-center" >
+       					<strong><small>
+       						Accomodation <br>
+       						<span *ngIf="guest.accomodationOption === 'CAMP'">Indicated: Camping</span>
+       						<span *ngIf="guest.accomodationOption === 'CARAVAN'">Indicated: Caravaning</span>
+       						<span *ngIf="guest.accomodationOption === 'BED'">Indicated: Shared rooms</span>
+       						<span *ngIf="guest.accomodationOption === 'OWN'">Indicated: Own Accomodation</span>
+       						<span *ngIf="guest.accomodationOption === 'notYet'">Not yet indicated</span>
+       					</small></strong>
+       				</h2>
+       			</div>
+       			<div class="col-md-4">
+       				<h2 class="text-center">
+	       				<span class="glyphicon glyphicon-leaf" *ngIf="guest.dietryPref === 'VEG'"> </span>
+	       				<span class="glyphicon glyphicon-cutlery" *ngIf="guest.dietryPref === 'NONE'"> </span>
+	       				<span class="glyphicon glyphicon-question-sign" *ngIf="guest.dietryPref === 'notYet'"></span>
+       				</h2>
+       				<h2 class="intro-text text-center" >
+       					<strong><small>
+       						Dietry preferance <br>
+       						<span *ngIf="guest.dietryPref === 'VEG'">Indicated: Vegiterian</span>
+       						<span *ngIf="guest.dietryPref === 'NONE'">Indicated: None</span>
+       						<span *ngIf="guest.dietryPref === 'notYet'">Not yet indicated</span>
+       					</small></strong></h2>
+       			</div>
+       		</div>
+
+ 
+
+        </div>
+    </div>
+
+</form>

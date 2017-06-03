@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'rsvp',
@@ -8,10 +9,16 @@ import { RouterModule, Routes } from '@angular/router';
 })
 export class  AppComponentRsvp {
    guests = [];
+   userInfo = {};
 
-  constructor () {
+  constructor (public userService : UserService) {
     console.log("AppRsvp");
     //init guests
+
+    userService.getUserInformation().subscribe(userInformation => {
+      this.userInfo = userInformation;
+      console.log(this.userService);
+    });
    
 
   }

@@ -55,6 +55,7 @@ export class UserService {
   private _getUserInformation(){
   	return new Promise((resolve, reject) => {
 	    if(this.loggedInUser) {
+	    try{
 
 	      let userInformationObservable = this.db.object(`/invites/${this.loggedInUser.uid}`);
 
@@ -63,8 +64,11 @@ export class UserService {
                   observer.next(userInfromation);
               });
               this.userInformation = userInfromation;
-              resolve(userInformationObservable);
-	      }));
+              resolve(this.userInformation);
+	      }))
+	  	} catch(error) {
+	  		reject(error);
+	  	}
 
 	    }
 
