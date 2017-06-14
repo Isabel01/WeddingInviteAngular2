@@ -16,59 +16,54 @@
        		<div class="row" *ngFor='let guest of userInfo.guests; trackBy: index;'>
 
        			<div class="col-md-12">
-       				<h3 class="intro-text text-center">
+       				<h3 class="intro-text text-center"><strong>
        				{{guest.name}} {{guest.surname}} 
-       				</h3>
+       				</strong></h3>
        				<hr>
        			</div>
        			<div class="col-md-4">
        				<h2 class="text-center">
-       					<span class="glyphicon glyphicon-ok" *ngIf="guest.rsvp && !(guest.rsvp ==='notYet')"></span>
-       					<span class="glyphicon glyphicon-remove" *ngIf="!guest.rsvp && 
-       					!(guest.rsvp === 'notYet')"></span>
-       					<span class="glyphicon glyphicon-question-sign" *ngIf="guest.rsvp === 'notYet'"></span>
+       					<a><span class="glyphicon glyphicon-ok" *ngIf="guest.rsvp && !(guest.rsvp ==='notYet')" (click)="setGuestForModal(guest)" data-toggle="modal" data-target="#rsvpModal"></span></a>
+       					<a><span class="glyphicon glyphicon-remove" *ngIf="!guest.rsvp && 
+       					!(guest.rsvp === 'notYet')" (click)="setGuestForModal(guest)" data-toggle="modal" data-target="#rsvpModal"></span></a>
+       					<a><span class="glyphicon glyphicon-question-sign" *ngIf="guest.rsvp === 'notYet'" data-toggle="modal" (click)="setGuestForModal(guest)" data-target="#rsvpModal"></span></a>
        				</h2>
-       				<h2 class="intro-text text-center" >
-       					<strong><small>
+       				<h4 class="intro-text text-center" >
        						Attending <br> 
        						<span *ngIf="guest.rsvp && !(guest.rsvp ==='notYet')" >Indicated: yes</span>
        						<span *ngIf="!guest.rsvp && !(guest.rsvp === 'notYet')" >Indicated: no</span>
        						<span *ngIf="guest.rsvp === 'notYet'"> Not yest indicated </span>
-       					</small></strong>
-       				</h2>
+       				</h4>
        			</div>
        			<div class="col-md-4">
        				<h2 class="text-center">
-	       				<span class="glyphicon glyphicon-tent" *ngIf="guest.accomodationOption === 'CAMP'"> </span>
-	       				<span class="glyphicon glyphicon-tent" *ngIf="guest.accomodationOption === 'CARAVAN'"> </span>
-	       				<span class="glyphicon glyphicon-home" *ngIf="guest.accomodationOption === 'BED'"> </span>
-	       				<span class="glyphicon glyphicon-bed" *ngIf="guest.accomodationOption === 'OWN'"> </span>
-	       				<span class="glyphicon glyphicon-question-sign" *ngIf="guest.accomodationOption === 'notYet'"></span>
+	       				<a><span class="glyphicon glyphicon-tent" *ngIf="guest.accomodationOption === 'CAMP'" data-toggle="modal" data-target="#accomodationModal" (click)="setGuestForModal(guest)"> </span></a>
+	       				<a><span class="glyphicon glyphicon-tent" *ngIf="guest.accomodationOption === 'CARAVAN'" data-toggle="modal" data-target="#accomodationModal" (click)="setGuestForModal(guest)"> </span></a>
+	       				<a><span class="glyphicon glyphicon-home" *ngIf="guest.accomodationOption === 'BED'" data-toggle="modal" data-target="#accomodationModal" (click)="setGuestForModal(guest)"> </span></a>
+	       				<a><span class="glyphicon glyphicon-bed" *ngIf="guest.accomodationOption === 'OWN'" data-toggle="modal" data-target="#accomodationModal" (click)="setGuestForModal(guest)"> </span></a>
+	       				<a><span class="glyphicon glyphicon-question-sign" *ngIf="guest.accomodationOption === 'notYet'" data-toggle="modal" data-target="#accomodationModal" (click)="setGuestForModal(guest)"></span></a>
        				</h2>
-       				<h2 class="intro-text text-center" >
-       					<strong><small>
+       				<h4 class="intro-text text-center" >
        						Accomodation <br>
        						<span *ngIf="guest.accomodationOption === 'CAMP'">Indicated: Camping</span>
        						<span *ngIf="guest.accomodationOption === 'CARAVAN'">Indicated: Caravaning</span>
        						<span *ngIf="guest.accomodationOption === 'BED'">Indicated: Shared rooms</span>
        						<span *ngIf="guest.accomodationOption === 'OWN'">Indicated: Own Accomodation</span>
        						<span *ngIf="guest.accomodationOption === 'notYet'">Not yet indicated</span>
-       					</small></strong>
-       				</h2>
+       				</h4>
        			</div>
        			<div class="col-md-4">
        				<h2 class="text-center">
-	       				<span class="glyphicon glyphicon-leaf" *ngIf="guest.dietryPref === 'VEG'"> </span>
-	       				<span class="glyphicon glyphicon-cutlery" *ngIf="guest.dietryPref === 'NONE'"> </span>
-	       				<span class="glyphicon glyphicon-question-sign" *ngIf="guest.dietryPref === 'notYet'"></span>
+	       				<a><span class="glyphicon glyphicon-leaf" *ngIf="guest.dietryPref === 'VEG'" data-toggle="modal" data-target="#dietryModal" (click)="setGuestForModal(guest)"> </span></a>
+	       				<a><span class="glyphicon glyphicon-cutlery" *ngIf="guest.dietryPref === 'NONE'" data-toggle="modal" data-target="#dietryModal" (click)="setGuestForModal(guest)"> </span></a>
+	       				<a><span class="glyphicon glyphicon-question-sign" *ngIf="guest.dietryPref === 'notYet'" data-toggle="modal" data-target="#dietryModal" (click)="setGuestForModal(guest)"></span></a>
        				</h2>
-       				<h2 class="intro-text text-center" >
-       					<strong><small>
+       				<h4 class="intro-text text-center" >
        						Dietry preferance <br>
        						<span *ngIf="guest.dietryPref === 'VEG'">Indicated: Vegiterian</span>
        						<span *ngIf="guest.dietryPref === 'NONE'">Indicated: None</span>
        						<span *ngIf="guest.dietryPref === 'notYet'">Not yet indicated</span>
-       					</small></strong></h2>
+       				</h4>
        			</div>
        		</div>
 
@@ -78,3 +73,179 @@
     </div>
 
 </form>
+
+<!-- RSVP Modal  -->
+<div id="rsvpModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">RSVP</h4>
+      </div>
+      <div class="modal-body">
+      <div class="alert alert-danger" role="alert" *ngIf="error">{{alertMessage}}</div>
+      <div class="alert alert-success" role="alert" *ngIf="done">{{alertMessage}}</div>
+        <p class="intro-text">Choose your RSVP option below</p>
+
+        <div class="dropdown">
+		  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		    RSVP Option
+		    <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu dropdown-menu-middle" aria-labelledby="rsvpDropDown">
+		    <li  (click)="rsvpOptionChosen(option)" *ngFor='let option of rsvpOptions; trackBy: index;'><a >{{option}}</a></li>
+		  </ul>
+		</div>
+		<p class="text-center"><small class="italic">
+			RSVP for {{modalGuest.name}} {{modalGuest.surname}}
+		</small></p>
+		<p class="text-center"><small> Current option: 
+			<span *ngIf="modalGuest.rsvp && !(modalGuest.rsvp ==='notYet')" >Attending</span>
+       		<span *ngIf="!modalGuest.rsvp && !(modalGuest.rsvp === 'notYet')" >Not Attending</span>
+       		<span *ngIf="modalGuest.rsvp === 'notYet'">Not yet indicated</span>
+		</small></p>
+		<h2 class="text-center">
+       		<span class="glyphicon glyphicon-ok" *ngIf="modalGuest.rsvp && !(modalGuest.rsvp ==='notYet')"></span>
+       		<span class="glyphicon glyphicon-remove" *ngIf="!modalGuest.rsvp && !(modalGuest.rsvp === 'notYet')"></span>
+       		<span class="glyphicon glyphicon-question-sign" *ngIf="modalGuest.rsvp === 'notYet'"></span>
+       	</h2>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clearAlertMessage()">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ACCOMODATION Modal  -->
+<div id="accomodationModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Accomodation</h4>
+      </div>
+      <div class="modal-body">
+      <div class="alert alert-danger" role="alert" *ngIf="error">{{alertMessage}}</div>
+      <div class="alert alert-success" role="alert" *ngIf="done">{{alertMessage}}</div>
+        <p class="intro-text">Choose your accomodation option below</p>
+        <form>
+        <div class="dropdown">
+		  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		    accomodation Option
+		    <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu dropdown-menu-middle" aria-labelledby="rsvpDropDown">
+		    <li  (click)="accomodationOptionChosen(option)" *ngFor='let option of accomodationOptions; trackBy: index;'><a >{{option}}</a></li>
+		  </ul>
+		</div>
+		<p class="text-center"><small class="italic">
+			Accomodation option for {{modalGuest.name}} {{modalGuest.surname}}
+		</small></p>
+		<p class="text-center"><small> Current option: 
+			<span *ngIf="modalGuest.accomodationOption === 'CAMP'">Camping</span>
+       		<span *ngIf="modalGuest.accomodationOption === 'CARAVAN'">Caravaning</span>
+       		<span *ngIf="modalGuest.accomodationOption === 'BED'">Shared rooms</span>
+       		<span *ngIf="modalGuest.accomodationOption === 'OWN'">Own Accomodation</span>
+       		<span *ngIf="modalGuest.accomodationOption === 'notYet'">Not yet indicated</span>
+		</small></p>
+		<h2 class="text-center">
+	       	<span class="glyphicon glyphicon-tent" *ngIf="modalGuest.accomodationOption === 'CAMP'"> </span>
+	       	<span class="glyphicon glyphicon-tent" *ngIf="modalGuest.accomodationOption === 'CARAVAN'"> </span>
+	       	<span class="glyphicon glyphicon-home" *ngIf="modalGuest.accomodationOption === 'BED'"> </span>
+	       	<span class="glyphicon glyphicon-bed" *ngIf="modalGuest.accomodationOption === 'OWN'" > </span>
+	       	<span class="glyphicon glyphicon-question-sign" *ngIf="modalGuest.accomodationOption === 'notYet'"></span>
+       	</h2>
+       	<p class="text-center"><small class="italic">
+			Arrival date:
+			<span *ngIf="modalGuest.accomodationOption === 'OWN'" >Saturday 31 March 2018</span>
+			<span *ngIf="modalGuest.accomodationOption !== 'OWN' && modalGuest.arrivalDate !== 'notYet'" >{{modalGuest.arrivalDate}}</span>
+		</small></p>
+		 <div class="dropdown" *ngIf="modalGuest.accomodationOption !== 'OWN'">
+		  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		    arrival option
+		    <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu dropdown-menu-middle" aria-labelledby="rsvpDropDown">
+		    <li (click)="arrivalDateChosen(option)"  *ngFor='let option of arrivalOptions; trackBy: index;'><a >{{option}}</a></li>
+		  </ul>
+		</div>
+			<p class="text-center"><small class="italic">
+			Departure date: 
+			<span *ngIf="modalGuest.accomodationOption === 'OWN'" >Saturday 31 March 2018</span>
+			<span *ngIf="modalGuest.accomodationOption !== 'OWN' && modalGuest.departureDate !== 'notYet'" >{{modalGuest.departureDate}}</span>
+		</small></p>
+		 <div class="dropdown" *ngIf="modalGuest.accomodationOption !== 'OWN'">
+		  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		    departure Option
+		    <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu dropdown-menu-middle" aria-labelledby="rsvpDropDown">
+		    <li (click)="departureDateChosen(option)" *ngFor='let option of departureOptions; trackBy: index;'><a >{{option}}</a></li>
+		  </ul>
+		</div>
+		</form>
+		</div>
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clearAlertMessage()">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Dietry Modal  -->
+<div id="dietryModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Dietry Preferance</h4>
+      </div>
+      <div class="modal-body">
+      <div class="alert alert-danger" role="alert" *ngIf="error">{{alertMessage}}</div>
+      <div class="alert alert-success" role="alert" *ngIf="done">{{alertMessage}}</div>
+        <p class="intro-text">Choose your Dietry preferance option below</p>
+        <form>
+        <div class="dropdown">
+		  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		    Dietry preferance
+		    <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu dropdown-menu-middle" aria-labelledby="rsvpDropDown">
+		    <li  (click)="dietryOptionChosen(option)" *ngFor='let option of dietryPrefOptions; trackBy: index;'><a >{{option}}</a></li>
+		  </ul>
+		</div>
+		<p class="text-center"><small class="italic">
+			Dietry option for {{modalGuest.name}} {{modalGuest.surname}}
+		</small></p>
+		<p class="text-center"><small> Current option: 
+			<span *ngIf="modalGuest.dietryPref === 'VEG'">Vegiterian</span>
+       		<span *ngIf="modalGuest.dietryPref === 'NONE'">None</span>
+       		<span *ngIf="modalGuest.dietryPref === 'notYet'">Not yet indicated</span>
+		</small></p>
+		<h2 class="text-center">
+	       	<span class="glyphicon glyphicon-leaf" *ngIf="modalGuest.dietryPref === 'VEG'"> </span>
+	       	<span class="glyphicon glyphicon-cutlery" *ngIf="modalGuest.dietryPref === 'NONE'"> </span>
+	       	<span class="glyphicon glyphicon-question-sign" *ngIf="modalGuest.dietryPref === 'notYet'"></span>
+       	</h2>
+		</form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clearAlertMessage()">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>

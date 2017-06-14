@@ -468,3 +468,16 @@ footer p {
     display: none;
   }
 }
+
+.dropdown {
+    text-align: center;
+}
+
+ul.dropdown-menu-middle {
+    right: auto;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0); 
+
+}

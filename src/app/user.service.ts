@@ -97,5 +97,6 @@ export interface UserInformation {
 
 export interface Guest {
   name : string,
-  surname : string
+  surname : string,
+  rsvp : boolean
 }
