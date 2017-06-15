@@ -10,7 +10,8 @@ import { UserService } from '../user.service';
 export class  AppComponentRsvp {
 
    userInfo = {
-   	guests: []
+   	guests: [],
+   	kids: []
    };
 
    rsvpOptions = ["Attending", "Not Attending"];
@@ -18,6 +19,7 @@ export class  AppComponentRsvp {
    dietryPrefOptions = ["None", "Vegeterian"];
    arrivalOptions = ["Friday 30 March 2018", "Satrurday 31 March 2018"];
    departureOptions = ["Saturday 31 March 2018", "Sunday 1 April 2018", "Monday 2 April 2018"];
+   genderOptions = ["MALE", "FEMALE"];
    modalGuest = {
    		name: '',
    		surname: '',
@@ -28,10 +30,23 @@ export class  AppComponentRsvp {
    		departureDate: "notYet"
 
    } ;
+   
+   child = {
+   	name: "",
+   	surname: "",
+   	age: "",
+   	gender: ""
+   };
    error = false;
    alertMessage = "";
    done = false;
-
+   childForModal = {
+   	name: "",
+   	surname: "",
+   	age: "",
+   	gender: ""
+   };
+   
 
   constructor (public userService : UserService) {
 
@@ -47,7 +62,6 @@ export class  AppComponentRsvp {
   }
 
   rsvpOptionChosen(option) :void {
-  	//TODO - update to DB
   	if (option) {
   		if(option === "Attending") {
   			this.modalGuest.rsvp = true;
@@ -65,7 +79,6 @@ export class  AppComponentRsvp {
   }
 
    accomodationOptionChosen(option) :void {
-  	//TODO - update to DB
   	if (option) {
   		if(option === "Camping") {
   			this.modalGuest.accomodationOption = "CAMP";
@@ -93,7 +106,6 @@ export class  AppComponentRsvp {
   }
 
    dietryOptionChosen(option) :void {
-  	//TODO - update to DB
   	if (option) {
   		if(option === "None") {
   			this.modalGuest.dietryPref = "NONE";
@@ -111,7 +123,6 @@ export class  AppComponentRsvp {
   }
 
   arrivalDateChosen(option) :void {
-  	//TODO - update to DB
   	if (option) {
   			this.modalGuest.arrivalDate = option;
   			this.error = false;
@@ -122,7 +133,6 @@ export class  AppComponentRsvp {
   }
 
   departureDateChosen(option) :void {
-  	//TODO - update to DB
   	if (option) {
   			this.modalGuest.departureDate = option;
   			this.error = false;
@@ -140,6 +150,73 @@ export class  AppComponentRsvp {
 
   saveDataToDatabase(){
     this.userService.saveUserInformation();
+  }
+
+  saveChild() :void {
+  	if(!this.child.name) {
+  		this.error = true;
+  		this.done = false;
+  		this.alertMessage = "Please fill out the name of your child";
+  	} else if(!this.child.surname) {
+  		this.error = true;
+  		this.done = false;
+  		this.alertMessage = "Please fill out the surname of your child";
+  	} else if(!this.child.age) {
+  		this.error = true;
+  		this.done = false;
+  		this.alertMessage = "Please fill out the age of your child";
+  	} else if(!this.child.gender) {
+  		this.error = true;
+  		this.done = false;
+  		this.alertMessage = "Please select child's gender";
+  	} else {
+  		this.error = false;
+  		this.done = true;
+  		this.userInfo.kids.push(this.child);
+  		this.saveDataToDatabase();
+  		this.alertMessage = "Child sucessfully added";
+  		this.clearChild();
+  	}
+  }
+
+  genderChosen(option) {
+  	this.child.gender = option;
+  }
+
+  genderChosenForEdit(option) {
+  	this.childForModal.gender = option;
+  }
+  clearChild(): void {
+  	this.child.name  = "";
+  	this.child.surname = "";
+  	this.child.age = "";
+  	this.child.gender = "";
+  }
+
+  setChildForModal(child) :void {
+  	this.childForModal = child;
+  }
+
+  removeChild(child) :void{
+  	//todo - remove correct child
+  	var index = this.userInfo.kids.indexOf(child);
+
+    if (index > -1) {
+        this.userInfo.kids.splice(index, 1);
+    }  
+    this.saveDataToDatabase();
+  	this.error = false;
+  	this.done = true;
+  	this.alertMessage = "Child list sucessfully updated"; 
+  	console.log(index);
+  	console.log(this.userInfo.kids);
+  }
+
+  editChild() :void{
+  	this.saveDataToDatabase();
+  	this.error = false;
+  	this.done = true;
+  	this.alertMessage = "Child sucessfully updated";
   }
 
 }

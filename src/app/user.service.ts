@@ -104,10 +104,18 @@ export class UserService {
 
 export interface UserInformation {
   guests : Array<Guest>
+  kids: Array<Child>
 }
 
 export interface Guest {
   name : string,
   surname : string,
   rsvp : boolean
+}
+
+export interface Child {
+  name : string,
+  surname : string,
+  age : string,
+  gender: string
 }
