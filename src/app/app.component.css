@@ -471,7 +471,7 @@ footer p {
 
 
 
-ul.dropdown-menu-middle {
+.dropdown-menu-middle {
     right: auto;
     left: 50%;
     -webkit-transform: translate(-50%, 0);

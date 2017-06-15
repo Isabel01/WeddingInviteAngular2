@@ -52,9 +52,9 @@
                     <h4> Dear
                         <div *ngFor="let guest of guests; let i = index" >
                          {{guest}}
-                         <span [hidden]="grammerSymbolAnd(i)"> &#38;</span>
+                         <span [hidden]="!grammerSymbolAnd(i)"> &#38;</span>
                         </div>
-                    <br>We invite you to join the celebration of the start of our fairytale </h4>
+                    <br>We invite you to witness the start of our fairytale</h4>
                     <h1 class="brand-name"><small>Place</small></h1>
                         <p>
                             L&#39;Abri Adventure Camp
@@ -67,7 +67,7 @@
                         </p>
                     <h1 class="brand-name"><small>Starting Time</small></h1>
                         <p>
-                            14:00 for 15:00
+                            13:00 for 14:00
                         </p>
                     <h1 class="brand-name"><small>Dress Code</small></h1>
                         <p>

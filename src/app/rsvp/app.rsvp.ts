@@ -46,6 +46,10 @@ export class  AppComponentRsvp {
    	age: "",
    	gender: ""
    };
+   song = {
+   	name: "",
+   	artist: ""
+   }
    
 
   constructor (public userService : UserService) {

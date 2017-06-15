@@ -401,3 +401,52 @@
 
   </div>
 </div>
+
+<!-- Kids Modal  -->
+<div id="songRequestModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Request a song</h4>
+      </div>
+      <div class="modal-body">
+      <div class="alert alert-danger" role="alert" *ngIf="error">{{alertMessage}}</div>
+      <div class="alert alert-success" role="alert" *ngIf="done">{{alertMessage}}</div>
+        <p class="intro-text">Fill out details below and then click 'save'</p>
+        <form>
+		<div>
+			<label>Song Name</label>
+            <input required="true" type="text" class="form-control" [(ngModel)]="childForModal.name" placeholder="Name" name="songName">
+            <label>Surname</label>
+            <input type="text" class="form-control" [(ngModel)]="childForModal.surname" placeholder="Surname" name="childSurname">
+            <label>Age</label>
+            <input type="text" class="form-control" [(ngModel)]="childForModal.age" placeholder="Age" name="childAge">
+            <label>Gender : </label>
+             <p class="intro-text italic" *ngIf="childForModal.gender === 'MALE' || childForModal.gender === 'FEMALE'">{{childForModal.gender}}</p>
+             <div class="dropdown">
+		  		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		    	Gender
+		    	<span class="caret"></span>
+		 		</button>
+		  		<ul class="dropdown-menu" aria-labelledby="rsvpDropDown">
+		    		<li  (click)="genderChosenForEdit(option)" *ngFor='let option of genderOptions; trackBy: index;'><a >{{option}}</a></li>
+		  		</ul>
+			</div>
+			<br>
+            <button type="submit" class="btn btn-default" (click)="editChild()"><span class="glyphicon glyphicon-save"></span> Save</button>
+
+        </div>
+		
+		</form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clearAlertMessage()">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
