@@ -8,7 +8,7 @@
             <hr>
        		<h1 class="brand-name text-center"> <strong><small>Guests:</small></strong></h1>
        		<p class="text-center"><small class="italic">
-       			Please indicate all your preferances below. Click on the icon to change your option. 
+       			Please indicate all your preferances below. Click on the icon to change your option.
        			<br>
        			***NOTE*** <br>
        			You will not be able to change your option after the 28th of January 2018
@@ -17,19 +17,19 @@
 
        			<div class="col-md-12">
        				<h3 class="intro-text text-center"><strong>
-       				{{guest.name}} {{guest.surname}} 
+       				{{guest.name}} {{guest.surname}}
        				</strong></h3>
        				<hr>
        			</div>
        			<div class="col-md-4">
        				<h2 class="text-center">
        					<a><span class="glyphicon glyphicon-ok" *ngIf="guest.rsvp && !(guest.rsvp ==='notYet')" (click)="setGuestForModal(guest)" data-toggle="modal" data-target="#rsvpModal"></span></a>
-       					<a><span class="glyphicon glyphicon-remove" *ngIf="!guest.rsvp && 
+       					<a><span class="glyphicon glyphicon-remove" *ngIf="!guest.rsvp &&
        					!(guest.rsvp === 'notYet')" (click)="setGuestForModal(guest)" data-toggle="modal" data-target="#rsvpModal"></span></a>
        					<a><span class="glyphicon glyphicon-question-sign" *ngIf="guest.rsvp === 'notYet'" data-toggle="modal" (click)="setGuestForModal(guest)" data-target="#rsvpModal"></span></a>
        				</h2>
        				<h4 class="intro-text text-center" >
-       						Attending <br> 
+       						Attending <br>
        						<span *ngIf="guest.rsvp && !(guest.rsvp ==='notYet')" >Indicated: yes</span>
        						<span *ngIf="!guest.rsvp && !(guest.rsvp === 'notYet')" >Indicated: no</span>
        						<span *ngIf="guest.rsvp === 'notYet'"> Not yest indicated </span>
@@ -69,7 +69,7 @@
        		<div class="text-center">
 	       		<h1 class="brand-name text-center"> <strong><small>Childern:</small></strong></h1>
 	       		<p class="text-center"><small class="italic">
-	       			You are more than welcome to bring along your childern, please click on the add button below and add all your childeren that will be attending the wedding :-) 
+	       			You are more than welcome to bring along your childern, please click on the add button below and add all your childeren that will be attending the wedding :-)
 	       			<br>
 	       			***NOTE*** <br>
 	       			You will not be able add any childern after the 28th of January 2018
@@ -79,7 +79,7 @@
 	       	<br>
 	       	<div class="col-md-12" *ngFor='let child of userInfo.kids; trackBy: index;'>
 	       		<h3 class="intro-text text-center"><strong>
-       				{{child.name}} {{child.surname}} 
+       				{{child.name}} {{child.surname}}
        				<a><span class="glyphicon glyphicon-pencil" (click)="setChildForModal(child)" data-toggle="modal" data-target="#editChildModal"></span></a>
        				<a><span class="glyphicon glyphicon-remove" (click)="setChildForModal(child)" data-toggle="modal" data-target="#removeChildModal"></span></a>
        			</strong></h3>
@@ -92,7 +92,7 @@
 		       		 	gender: {{child.gender}}
 		       		</h4>
 	       		</div>
-	       	</div> 
+	       	</div>
         </div>
     </div>
 
@@ -125,7 +125,7 @@
 		<p class="text-center"><small class="italic">
 			RSVP for {{modalGuest.name}} {{modalGuest.surname}}
 		</small></p>
-		<p class="text-center"><small> Current option: 
+		<p class="text-center"><small> Current option:
 			<span *ngIf="modalGuest.rsvp && !(modalGuest.rsvp ==='notYet')" >Attending</span>
        		<span *ngIf="!modalGuest.rsvp && !(modalGuest.rsvp === 'notYet')" >Not Attending</span>
        		<span *ngIf="modalGuest.rsvp === 'notYet'">Not yet indicated</span>
@@ -172,7 +172,7 @@
 		<p class="text-center"><small class="italic">
 			Accomodation option for {{modalGuest.name}} {{modalGuest.surname}}
 		</small></p>
-		<p class="text-center"><small> Current option: 
+		<p class="text-center"><small> Current option:
 			<span *ngIf="modalGuest.accomodationOption === 'CAMP'">Camping</span>
        		<span *ngIf="modalGuest.accomodationOption === 'CARAVAN'">Caravaning</span>
        		<span *ngIf="modalGuest.accomodationOption === 'BED'">Shared rooms</span>
@@ -201,7 +201,7 @@
 		  </ul>
 		</div>
 			<p class="text-center"><small class="italic">
-			Departure date: 
+			Departure date:
 			<span *ngIf="modalGuest.accomodationOption === 'OWN'" >Saturday 31 March 2018</span>
 			<span *ngIf="modalGuest.accomodationOption !== 'OWN' && modalGuest.departureDate !== 'notYet'" >{{modalGuest.departureDate}}</span>
 		</small></p>
@@ -253,7 +253,7 @@
 		<p class="text-center"><small class="italic">
 			Dietry option for {{modalGuest.name}} {{modalGuest.surname}}
 		</small></p>
-		<p class="text-center"><small> Current option: 
+		<p class="text-center"><small> Current option:
 			<span *ngIf="modalGuest.dietryPref === 'VEG'">Vegiterian</span>
        		<span *ngIf="modalGuest.dietryPref === 'NONE'">None</span>
        		<span *ngIf="modalGuest.dietryPref === 'notYet'">Not yet indicated</span>
@@ -311,7 +311,7 @@
             <button type="submit" class="btn btn-default" (click)="saveChild()"><span class="glyphicon glyphicon-save"></span> Save</button>
 
         </div>
-		
+
 		</form>
       </div>
 
@@ -342,7 +342,7 @@
 			age: {{childForModal.age}} <br>
 			gender: {{childForModal.gender}}
 		</small></p>
-		<button type="button" class="btn btn-default text-center" (click)="removeChild()">Yes Remove Child</button>
+		<button type="button" class="btn btn-default text-center" (click)="removeChild(childForModal)">Yes Remove Child</button>
       </div>
 
       <div class="modal-footer">
@@ -390,7 +390,7 @@
             <button type="submit" class="btn btn-default" (click)="editChild()"><span class="glyphicon glyphicon-save"></span> Save</button>
 
         </div>
-		
+
 		</form>
       </div>
 
@@ -439,7 +439,7 @@
             <button type="submit" class="btn btn-default" (click)="editChild()"><span class="glyphicon glyphicon-save"></span> Save</button>
 
         </div>
-		
+
 		</form>
       </div>
 

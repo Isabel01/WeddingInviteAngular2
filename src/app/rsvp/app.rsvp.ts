@@ -30,7 +30,7 @@ export class  AppComponentRsvp {
    		departureDate: "notYet"
 
    } ;
-   
+
    child = {
    	name: "",
    	surname: "",
@@ -50,7 +50,7 @@ export class  AppComponentRsvp {
    	name: "",
    	artist: ""
    }
-   
+
 
   constructor (public userService : UserService) {
 
@@ -176,6 +176,11 @@ export class  AppComponentRsvp {
   	} else {
   		this.error = false;
   		this.done = true;
+
+  		if(!this.userInfo.kids){
+  		  this.userInfo.kids = [];
+      }
+
   		this.userInfo.kids.push(this.child);
   		this.saveDataToDatabase();
   		this.alertMessage = "Child sucessfully added";
@@ -203,15 +208,15 @@ export class  AppComponentRsvp {
 
   removeChild(child) :void{
   	//todo - remove correct child
-  	var index = this.userInfo.kids.indexOf(child);
+    var index = this.userInfo.kids.indexOf(child);
 
     if (index > -1) {
         this.userInfo.kids.splice(index, 1);
-    }  
+    }
     this.saveDataToDatabase();
   	this.error = false;
   	this.done = true;
-  	this.alertMessage = "Child list sucessfully updated"; 
+  	this.alertMessage = "Child list sucessfully updated";
   	console.log(index);
   	console.log(this.userInfo.kids);
   }
