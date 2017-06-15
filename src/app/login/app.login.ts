@@ -23,5 +23,5 @@ export class AppComponentLogin {
          this.error = error.message;
      });
   }
-  
+
 }

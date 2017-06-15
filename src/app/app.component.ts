@@ -12,11 +12,12 @@ import { UserService } from './user.service';
 export class AppComponent {
 	validSession;
 
-	constructor(public userService : UserService) {
+	constructor(public userService : UserService,private router: Router) {
 
 	}
 
    logOut() {
-   		this.userService.logOut();
+     this.userService.logOut();
+     this.router.navigate(['/login']);
    }
 }
