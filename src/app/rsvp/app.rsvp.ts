@@ -8,10 +8,11 @@ import { UserService } from '../user.service';
   styleUrls: [ '../../../node_modules/bootstrap/dist/css/bootstrap.min.css', '../app.component.css']
 })
 export class  AppComponentRsvp {
-   guests = [];
+
    userInfo = {
    	guests: []
    };
+
    rsvpOptions = ["Attending", "Not Attending"];
    accomodationOptions = ["Camping", "Caravaning", "Shared rooms", "Own accomodation"];
    dietryPrefOptions = ["None", "Vegeterian"];
@@ -33,12 +34,11 @@ export class  AppComponentRsvp {
 
 
   constructor (public userService : UserService) {
-    console.log("AppRsvp");
-    //init guests
 
     userService.getUserInformation().subscribe(userInformation => {
-      this.userInfo = userInformation;
-      console.log(this.userService);
+      if(userInformation) {
+        this.userInfo = userInformation;
+      }
     });
   }
 
@@ -61,6 +61,7 @@ export class  AppComponentRsvp {
   			this.alertMessage = "RSVP status updated successfully";
   		}
   	}
+  	this.saveDataToDatabase();
   }
 
    accomodationOptionChosen(option) :void {
@@ -88,6 +89,7 @@ export class  AppComponentRsvp {
   			this.alertMessage = "Accomodation option saved successfully";
   		}
   	}
+  	this.saveDataToDatabase();
   }
 
    dietryOptionChosen(option) :void {
@@ -103,8 +105,9 @@ export class  AppComponentRsvp {
   			this.error = false;
   			this.done = true;
   			this.alertMessage = "Dietry option saved successfully";
-  		} 
+  		}
   	}
+  	this.saveDataToDatabase();
   }
 
   arrivalDateChosen(option) :void {
@@ -115,6 +118,7 @@ export class  AppComponentRsvp {
   			this.done = true;
   			this.alertMessage = "Arrival date saved successfully";
   	}
+    this.saveDataToDatabase();
   }
 
   departureDateChosen(option) :void {
@@ -125,12 +129,17 @@ export class  AppComponentRsvp {
   			this.done = true;
   			this.alertMessage = "Departure date saved successfully";
   	}
+  	this.saveDataToDatabase();
   }
 
   clearAlertMessage() :void {
   	this.error = false;
   	this.done = false;
   	this.alertMessage = "";
+  }
+
+  saveDataToDatabase(){
+    this.userService.saveUserInformation();
   }
 
 }

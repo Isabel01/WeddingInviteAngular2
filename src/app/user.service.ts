@@ -89,6 +89,17 @@ export class UserService {
     });
   }
 
+  saveUserInformation(){
+    //TO DO add a promise for a callback
+    let userInformationObservable = this.db.object(`/invites/${this.loggedInUser.uid}`);
+    userInformationObservable.update(this.userInformation).then(()=> {
+        console.log('Data Saved');
+    }).catch(error => {
+      console.log(error);
+    })
+
+  }
+
 }
 
 export interface UserInformation {
