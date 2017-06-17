@@ -228,4 +228,21 @@ export class  AppComponentRsvp {
   	this.alertMessage = "Child sucessfully updated";
   }
 
+  addSong() :void{
+  	//save this.song
+  	if(!this.song.name) {
+  		this.error = true;
+  		this.done = false;
+  		this.alertMessage = "Please add a song name";	
+  	} else if(!this.song.artist) {
+  		this.error = true;
+  		this.done = false;
+  		this.alertMessage = "Please add a song artist";
+  	} else {
+  		this.error = false;
+  		this.done = true;
+  		this.alertMessage = "Song sucessfully Added";	
+  	}
+  }
+
 }
