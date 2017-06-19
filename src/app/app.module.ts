@@ -21,6 +21,7 @@ import { environment } from '../environments/environment';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { UserService } from './user.service';
+import { MusicService } from './music.service';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { UserService } from './user.service';
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
   ],
 
-  providers: [UserService],
+  providers: [UserService, MusicService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
