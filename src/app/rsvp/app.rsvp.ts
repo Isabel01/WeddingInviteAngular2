@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserService } from '../user.service';
+import {MusicService, Song} from "../music.service";
 
 @Component({
   selector: 'rsvp',
@@ -51,14 +52,22 @@ export class  AppComponentRsvp {
    	artist: ""
    }
 
+   songs : Song[]= [];
 
-  constructor (public userService : UserService) {
+
+  constructor (public userService : UserService,public musicService : MusicService) {
 
     userService.getUserInformation().subscribe(userInformation => {
       if(userInformation) {
         this.userInfo = userInformation;
       }
     });
+
+    musicService.getAllSongs().subscribe(songs => {
+      console.log(songs);
+      this.songs = songs;
+    });
+
   }
 
   setGuestForModal(guest) :void {
@@ -233,7 +242,7 @@ export class  AppComponentRsvp {
   	if(!this.song.name) {
   		this.error = true;
   		this.done = false;
-  		this.alertMessage = "Please add a song name";	
+  		this.alertMessage = "Please add a song name";
   	} else if(!this.song.artist) {
   		this.error = true;
   		this.done = false;
@@ -241,7 +250,8 @@ export class  AppComponentRsvp {
   	} else {
   		this.error = false;
   		this.done = true;
-  		this.alertMessage = "Song sucessfully Added";	
+      this.musicService.addSong(this.song);
+  		this.alertMessage = "Song sucessfully Added";
   	}
   }
 

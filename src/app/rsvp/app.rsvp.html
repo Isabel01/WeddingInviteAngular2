@@ -432,7 +432,7 @@
             <input required="true" type="text" class="form-control" [(ngModel)]="song.name" placeholder="Song Name" name="songName">
             <label>Artist name</label>
             <input type="text" class="form-control" [(ngModel)]="song.artist" placeholder="Artist name" name="artistName">
-            <br>		
+            <br>
             <button type="submit" class="btn btn-default" (click)="addSong()"><span class="glyphicon glyphicon-save"></span> Add Song</button>
 
         </div>
@@ -461,7 +461,9 @@
       <div class="modal-body">
       <div class="alert alert-danger" role="alert" *ngIf="error">{{alertMessage}}</div>
       <div class="alert alert-success" role="alert" *ngIf="done">{{alertMessage}}</div>
-        sons.....
+        <div *ngFor="let song of songs">
+          {{song.name}} - {{song.artist}}
+        </div>
       </div>
 
       <div class="modal-footer">
