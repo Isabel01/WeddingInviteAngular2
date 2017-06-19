@@ -15,7 +15,6 @@ guests = [];
       this.router.navigate(['/login']);
     }
     console.log("AppGeneral");
-    this.guests = [];
   }
   
 }

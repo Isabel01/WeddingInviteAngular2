@@ -45,8 +45,4 @@ export class  AppComponentInvite {
       }
       return false;
    }
-
-
-
-
 }
