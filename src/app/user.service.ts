@@ -9,7 +9,10 @@ export class UserService {
 	loggedInUser;
 	subscriptions : Subscription[] = [];
 	userInformation : UserInformation;
+  userInformationAdmin : UserInformation;
 	userInformationObservers : Observer<UserInformation>[] = [];
+  userInformationObserversAdmin : Observer<UserInformation>[] = [];
+
 
   constructor(
     public afAuth: AngularFireAuth,
@@ -100,44 +103,19 @@ export class UserService {
 
   }
 
-  addInvite(inviteCode: String, guests: Array<Guest> ) :String {
+  addInvite(inviteCode: string, guests: Array<Guest> ) :String {
 
-    try{
+    let obj = {
+      guests: guests
+    };
 
-        let userInformationObservable = this.db.object(`/invites/${inviteCode}`);
+     
 
-        this.subscriptions.push(userInformationObservable.subscribe(userInfromation => {
-              this.userInformationObservers.forEach(observer => {
-                  observer.next(userInfromation);
-              });
-              this.userInformation = userInfromation;
-        }))
-      } catch(error) {
-         return "Invalid invite code";
-      }
+     let inviteObservable = this.db.list(`/invites`);
+     inviteObservable.push(obj).ref.child(inviteCode);
 
-      let invite = new Observable<UserInformation>(observer => {
-        this.userInformationObservers.push(observer);
-        observer.next(this.userInformation);
-      });
-
-      let inviteInfo : UserInformation;
-
-      invite.subscribe(userInformation => {
-         if(userInformation) {
-          inviteInfo = userInformation;
-        }
-      });
-
-      inviteInfo.guests = guests;
-      inviteInfo.kids = [];
-
-     let userInformationObservable = this.db.object(`/invites/${inviteCode}`);
-      userInformationObservable.update(this.userInformation).then(()=> {
-        console.log('Data Saved');
-      }).catch(error => {
-        console.log(error);
-      })
+      return "done";
+    
 
 
 
