@@ -103,29 +103,20 @@ export class UserService {
 
   }
 
-  addInvite(inviteCode: string, guests: Array<Guest> ) :String {
+  addInvite(inviteCode: string, guests: Array<Guest> ) {
 
     let obj = {
       guests: guests
-    };
-
-     
+    };  
 
      let inviteObservable = this.db.list(`/invites`);
-     inviteObservable.push(obj).ref.child(inviteCode);
-
-      return "done";
-    
-
-
-
-    
-  }
-
+     inviteObservable.push(obj);
+   }
+     
 }
 
 export interface UserInformation {
-  guests : Array<Guest>
+  guests: Array<Guest>,
   kids: Array<Child>
 }
 
