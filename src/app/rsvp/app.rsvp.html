@@ -461,9 +461,18 @@
       <div class="modal-body">
       <div class="alert alert-danger" role="alert" *ngIf="error">{{alertMessage}}</div>
       <div class="alert alert-success" role="alert" *ngIf="done">{{alertMessage}}</div>
-        <div *ngFor="let song of songs">
-          {{song.name}} - {{song.artist}}
-        </div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Song Name ~ Artist Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr  *ngFor="let song of songs">
+              <td>{{song.name}} <span class="italic"> <small> by </small> {{song.artist}}</span></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
       <div class="modal-footer">
