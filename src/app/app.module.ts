@@ -22,6 +22,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { UserService } from './user.service';
 import { MusicService } from './music.service';
+import { AppComponentAdmin } from './admin/app.admin'
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MusicService } from './music.service';
     AppComponentDirections,
     AppComponentLabri,
     AppComponentRsvp,
-    AppComponentWeddingParty
+    AppComponentWeddingParty,
+    AppComponentAdmin
 ],
   imports: [
     AppModuleRoutes,

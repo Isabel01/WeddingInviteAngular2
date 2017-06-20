@@ -8,6 +8,7 @@ import { AppComponentDirections } from '../directions/app.directions';
 import { AppComponentLabri } from '../labri/app.labri';
 import { AppComponentRsvp } from '../rsvp/app.rsvp';
 import { AppComponentWeddingParty } from '../weddingParty/app.weddingParty';
+import { AppComponentAdmin } from '../admin/app.admin'
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -18,6 +19,7 @@ const appRoutes: Routes = [
   { path: 'labri', component: AppComponentLabri },
   { path: 'rsvp', component: AppComponentRsvp },
   { path: 'weddingParty', component: AppComponentWeddingParty },
+  { path: 'alpha', component: AppComponentAdmin},
   { path: '**', component: AppComponentPageNotFound }
 ];
 

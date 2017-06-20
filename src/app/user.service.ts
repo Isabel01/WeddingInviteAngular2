@@ -100,6 +100,50 @@ export class UserService {
 
   }
 
+  addInvite(inviteCode: String, guests: Array<Guest> ) :String {
+
+    try{
+
+        let userInformationObservable = this.db.object(`/invites/${inviteCode}`);
+
+        this.subscriptions.push(userInformationObservable.subscribe(userInfromation => {
+              this.userInformationObservers.forEach(observer => {
+                  observer.next(userInfromation);
+              });
+              this.userInformation = userInfromation;
+        }))
+      } catch(error) {
+         return "Invalid invite code";
+      }
+
+      let invite = new Observable<UserInformation>(observer => {
+        this.userInformationObservers.push(observer);
+        observer.next(this.userInformation);
+      });
+
+      let inviteInfo : UserInformation;
+
+      invite.subscribe(userInformation => {
+         if(userInformation) {
+          inviteInfo = userInformation;
+        }
+      });
+
+      inviteInfo.guests = guests;
+      inviteInfo.kids = [];
+
+     let userInformationObservable = this.db.object(`/invites/${inviteCode}`);
+      userInformationObservable.update(this.userInformation).then(()=> {
+        console.log('Data Saved');
+      }).catch(error => {
+        console.log(error);
+      })
+
+
+
+    
+  }
+
 }
 
 export interface UserInformation {
@@ -111,6 +155,11 @@ export interface Guest {
   name : string,
   surname : string,
   rsvp : boolean
+  accomodationOption : String,
+  arrivalDate: String,
+  departureDate: String,
+  dietryPref: String
+ 
 }
 
 export interface Child {
