@@ -69,7 +69,7 @@
        		<div class="text-center">
 	       		<h1 class="brand-name text-center"> <strong><small>Children:</small></strong></h1>
 	       		<p class="text-center"><small class="italic">
-	       			You are more than welcome to bring along your children, please click on the add button below and add all your childeren that will be attending the wedding :-)
+	       			You are more than welcome to bring along your children, please click on the add button below and add all your children that will be attending the wedding :-)
 	       			<br>
 	       			***NOTE*** <br>
 	       			You will not be able add any children after the 28th of January 2018
@@ -170,7 +170,7 @@
       <div class="alert alert-success" role="alert" *ngIf="done">{{alertMessage}}</div>
         <p class="intro-text">Choose your accomodation option below</p>
         <form>
-        <div class="dropdown">
+        <div class="dropdown text-center">
 		  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 		    accomodation Option
 		    <span class="caret"></span>
@@ -201,7 +201,7 @@
 			<span *ngIf="modalGuest.accomodationOption === 'OWN'" >Saturday 31 March 2018</span>
 			<span *ngIf="modalGuest.accomodationOption !== 'OWN' && modalGuest.arrivalDate !== 'notYet'" >{{modalGuest.arrivalDate}}</span>
 		</small></p>
-		 <div class="dropdown" *ngIf="modalGuest.accomodationOption !== 'OWN'">
+		 <div class="dropdown text-center" *ngIf="modalGuest.accomodationOption !== 'OWN'">
 		  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 		    arrival option
 		    <span class="caret"></span>
@@ -215,7 +215,7 @@
 			<span *ngIf="modalGuest.accomodationOption === 'OWN'" >Saturday 31 March 2018</span>
 			<span *ngIf="modalGuest.accomodationOption !== 'OWN' && modalGuest.departureDate !== 'notYet'" >{{modalGuest.departureDate}}</span>
 		</small></p>
-		 <div class="dropdown" *ngIf="modalGuest.accomodationOption !== 'OWN'">
+		 <div class="dropdown text-center" *ngIf="modalGuest.accomodationOption !== 'OWN'">
 		  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 		    departure Option
 		    <span class="caret"></span>
