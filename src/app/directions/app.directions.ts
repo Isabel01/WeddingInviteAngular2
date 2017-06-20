@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { UserService, UserInformation } from "../user.service"
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'directions',
@@ -9,9 +11,11 @@ import { RouterModule, Routes } from '@angular/router';
 export class  AppComponentDirections {
    guests = [];
 
-  constructor () {
+  constructor (public userService : UserService, private router: Router) {
     console.log("AppDirections");
-    //init guests
+    if (!this.userService.isLoggedIn) {
+      this.router.navigate(['/login']);
+    }
    
 
   }

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
 import { UserService } from '../user.service';
 import {MusicService, Song} from "../music.service";
+import { Router} from '@angular/router';
+
 
 @Component({
   selector: 'rsvp',
@@ -55,7 +56,11 @@ export class  AppComponentRsvp {
    songs : Song[]= [];
 
 
-  constructor (public userService : UserService,public musicService : MusicService) {
+  constructor (public userService : UserService,public musicService : MusicService, private router: Router) {
+
+    if (!this.userService.isLoggedIn) {
+      this.router.navigate(['/login']);
+    }
 
     userService.getUserInformation().subscribe(userInformation => {
       if(userInformation) {
@@ -226,8 +231,6 @@ export class  AppComponentRsvp {
   	this.error = false;
   	this.done = true;
   	this.alertMessage = "Child list sucessfully updated";
-  	console.log(index);
-  	console.log(this.userInfo.kids);
   }
 
   editChild() :void{
