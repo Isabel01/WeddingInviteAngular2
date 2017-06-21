@@ -254,6 +254,8 @@ export class  AppComponentRsvp {
   		this.error = false;
   		this.done = true;
       this.musicService.addSong(this.song);
+      this.song.name = "";
+      this.song.artist = "";
   		this.alertMessage = "Song sucessfully Added";
   	}
   }

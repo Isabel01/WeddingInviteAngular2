@@ -33,8 +33,6 @@ export class  AppComponentInvite {
 
   grammerSymbolAnd(index) :boolean {
     //console.log("index " + index)
-    console.log(this.guests.length);
-    console.log(index);
       if (this.guests.length === 1) {
         return false;
       } else if (this.guests.length == 2 && index == 0) {
