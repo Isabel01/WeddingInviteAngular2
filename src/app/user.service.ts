@@ -109,8 +109,8 @@ export class UserService {
       guests: guests
     };  
 
-     let inviteObservable = this.db.list(`/invites`);
-     inviteObservable.push(obj);
+     let inviteObservable = this.db.object(`/invites/${inviteCode}`);
+     inviteObservable.set(obj);
    }
      
 }
