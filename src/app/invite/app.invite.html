@@ -45,9 +45,11 @@
                     <h2 class="brand-before">
                         Isabel &#38; Hanrich
                     </h2>
-                    <h1 class="brand-name"><small>31 March 2018</small></h1>
+                    <h1 class="brand-name"><small>31 March 2018 </small></h1>
+                   <h5 class="italic"><count-down [text]="text" units="Days | Hours | Minutes " end="March 31, 2018"></count-down></h5>
                     <hr>
                 </div>
+
                 <div class="text-center">
                     <h4> Dear
                         <div *ngFor="let guest of guests; let i = index" >

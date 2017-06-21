@@ -9,6 +9,10 @@ import { Router} from '@angular/router';
 })
 export class  AppComponentInvite {
    guests = [];
+   text: any = { "Weeks": "Weeks", 
+    "Days": "Days", "Hours": "Hours",
+     Minutes: "Minutes", "Seconds": "Seconds",
+    "MilliSeconds":"MilliSeconds" };
 
   constructor (public userService : UserService, private router: Router) {
     if (!this.userService.isLoggedIn) {

@@ -23,6 +23,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { UserService } from './user.service';
 import { MusicService } from './music.service';
 import { AppComponentAdmin } from './admin/app.admin'
+import { CountDown } from "../../node_modules/angular2-simple-countdown/countdown";
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AppComponentAdmin } from './admin/app.admin'
     AppComponentLabri,
     AppComponentRsvp,
     AppComponentWeddingParty,
-    AppComponentAdmin
+    AppComponentAdmin,
+    CountDown
 ],
   imports: [
     AppModuleRoutes,
