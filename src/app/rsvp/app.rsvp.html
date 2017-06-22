@@ -17,7 +17,8 @@
 
        			<div class="col-md-12">
        				<h3 class="intro-text text-center"><strong>
-       				{{guest.name}} {{guest.surname}}
+       				{{guest.name}} {{guest.surname}} <br *ngIf="guest.role">
+              <span *ngIf="guest.role">({{guest.role}})</span>
        				</strong></h3>
        				<hr>
        			</div>
