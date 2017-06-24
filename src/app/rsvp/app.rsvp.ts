@@ -260,4 +260,22 @@ export class  AppComponentRsvp {
   	}
   }
 
+  saveGuestDetails() :void {
+    if(!this.modalGuest.name) {
+      this.error = true;
+      this.done = false;
+      this.alertMessage = "Please enter a name for your guest";
+    } else if(!this.modalGuest.surname) {
+       this.error = true;
+      this.done = false;
+      this.alertMessage = "Please enter a surname for your guest";
+    } else {
+      this.saveDataToDatabase();
+      this.error = false;
+      this.done = true;
+      this.alertMessage = "Guest saved successfully";
+    }
+
+  }
+
 }
