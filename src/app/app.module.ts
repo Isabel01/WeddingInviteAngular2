@@ -24,6 +24,8 @@ import { UserService } from './user.service';
 import { MusicService } from './music.service';
 import { AppComponentAdmin } from './admin/app.admin'
 import { CountDown } from "../../node_modules/angular2-simple-countdown/countdown";
+import { AlertModule } from "../../node_modules/ngx-bootstrap";
+
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import { CountDown } from "../../node_modules/angular2-simple-countdown/countdow
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule, // imports firebase/database, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+    AlertModule.forRoot()
   ],
 
   providers: [UserService, MusicService],

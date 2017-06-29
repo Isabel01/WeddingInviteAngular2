@@ -35,7 +35,7 @@
        						Attending <br>
        						<span *ngIf="guest.rsvp && !(guest.rsvp ==='notYet')" >Indicated: yes</span>
        						<span *ngIf="!guest.rsvp && !(guest.rsvp === 'notYet')" >Indicated: no</span>
-       						<span *ngIf="guest.rsvp === 'notYet'"> Not yest indicated </span>
+       						<span *ngIf="guest.rsvp === 'notYet'"> Not yet indicated </span>
        				</h4>
        			</div>
        			<div class="col-md-4">
@@ -75,7 +75,7 @@
 	       			You are more than welcome to bring along your children, please click on the add button below and add all your children that will be attending the wedding :-)
 	       			<br>
 	       			***NOTE*** <br>
-	       			You will not be able add any children after the 28th of January 2018
+	       			You will not be to able add any children after the 28th of January 2018
 	       		</small></p>
 	       		<button type="button" class="btn btn-default" data-toggle="modal" data-target="#kidsModal" ><span class="glyphicon glyphicon-plus"></span>  Add Child</button>
 	       	</div>
@@ -171,7 +171,8 @@
       <div class="modal-body">
       <div class="alert alert-danger" role="alert" *ngIf="error">{{alertMessage}}</div>
       <div class="alert alert-success" role="alert" *ngIf="done">{{alertMessage}}</div>
-        <p class="intro-text">Choose your accomodation option below</p>
+        <p class="intro-text text-center">Choose your accomodation option below</p>
+        <p class="text-center"><small class="italic">For more info on the accomodation options - please visit the <a [routerLink]="[ '/general' ]">General</a> page</small></p>
         <form>
         <div class="dropdown text-center">
 		  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -254,7 +255,7 @@
       <div class="alert alert-success" role="alert" *ngIf="done">{{alertMessage}}</div>
         <p class="intro-text">Choose your Dietry preferance option below</p>
         <form>
-        <div class="dropdown">
+        <div class="dropdown text-center">
 		  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 		    Dietry preferance
 		    <span class="caret"></span>
