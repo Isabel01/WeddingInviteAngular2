@@ -17,7 +17,7 @@ export class  AppComponentRsvp {
    };
 
    rsvpOptions = ["Attending", "Not Attending"];
-   accomodationOptions = ["Camping", "Caravaning", "Shared rooms", "Own accomodation"];
+   accomodationOptions = ["Camping", "Caravaning", "Shared Rooms", "Own Accommodation"];
    dietryPrefOptions = ["None", "Vegeterian"];
    arrivalOptions = ["Friday 30 March 2018", "Satrurday 31 March 2018"];
    departureOptions = ["Saturday 31 March 2018", "Sunday 1 April 2018", "Monday 2 April 2018"];
