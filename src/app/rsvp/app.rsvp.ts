@@ -108,12 +108,12 @@ export class  AppComponentRsvp {
   			this.error = false;
   			this.done = true;
   			this.alertMessage = "Accomodation option saved successfully";
-  		} else if(option === "Shared rooms") {
+  		} else if(option === "Shared Rooms") {
   			this.modalGuest.accomodationOption = "BED";
   			this.error = false;
   			this.done = true;
   			this.alertMessage = "Accomodation option saved successfully";
-  		} else if(option === "Own accomodation") {
+  		} else if(option === "Own Accommodation") {
   			this.modalGuest.accomodationOption = "OWN";
   			this.error = false;
   			this.done = true;

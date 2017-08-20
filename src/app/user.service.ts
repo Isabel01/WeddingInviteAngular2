@@ -9,9 +9,12 @@ export class UserService {
 	loggedInUser;
 	subscriptions : Subscription[] = [];
 	userInformation : UserInformation;
+  invite : Array<UserInformation>;
   userInformationAdmin : UserInformation;
 	userInformationObservers : Observer<UserInformation>[] = [];
+  inviteObservable : Observer<UserInformation[]>[] = [];
   userInformationObserversAdmin : Observer<UserInformation>[] = [];
+  invites : UserInformation[] = [];
 
 
   constructor(
@@ -30,6 +33,7 @@ export class UserService {
       }
     });
 
+    this._getAllGuests()
   }
 
   logIn(username : string , password : string) {
@@ -112,8 +116,38 @@ export class UserService {
      let inviteObservable = this.db.object(`/invites/${inviteCode}`);
      inviteObservable.set(obj);
    }
-     
+
+ private _getAllGuests(){
+    return new Promise((resolve, reject) => {
+      try{
+
+        let guestsObservable = this.db.list(`/invites`);
+
+        this.subscriptions.push(guestsObservable.subscribe(invites => {
+              this.inviteObservable.forEach(observer => {
+                  observer.next(invites);
+                  console.log(observer);
+              });
+              this.invites = invites;
+              resolve(this.invites);
+        }))
+      } catch(error) {
+        reject(error);
+      }
+
+     });
+
+  }
+
+  getAllGuests() : Observable<UserInformation[]> {
+    return new Observable<UserInformation[]>(observer => {
+      this.inviteObservable.push(observer);
+      observer.next(this.invites);
+    });
+  }
+
 }
+
 
 export interface UserInformation {
   guests: Array<Guest>,

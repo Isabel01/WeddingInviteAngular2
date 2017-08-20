@@ -22,6 +22,8 @@ export class  AppComponentAdmin {
   alertMessage = "";
   done = false;
   inviteCode = "";
+  guestList;
+  guestListGuests = [];
 
   constructor (public userService : UserService, private router: Router) {
     
@@ -29,6 +31,9 @@ export class  AppComponentAdmin {
       this.router.navigate(['/login']);
     }
     console.log("AppAdmin");
+    this.getAllGuests().then(guestList => {
+        this.getAllGuestData(guestList).then();
+    });
   }
 
   addGuest(): void {
@@ -78,4 +83,30 @@ export class  AppComponentAdmin {
   saveInvite() :void{
   	this.userService.addInvite(this.inviteCode, this.guests);
   }
+
+  getAllGuests(){
+     return new Promise((resolve) => {
+      this.userService.getAllGuests().subscribe(invites => {
+        if(invites) {
+          this.guestList = invites;
+          resolve( this.guestList );
+        } else {
+          console.log("invites failed");
+        }
+      }); 
+    });
+  }
+
+  getAllGuestData(guestListData){
+    return new Promise((resolve) => {
+      for (let invite of guestListData) {
+        this.guestListGuests.concat(invite.guests);
+      }
+      resolve(this.guestListGuests);
+      console.log(this.guestListGuests)
+      return this.guestListGuests;
+    });
+  }
+
+  
 }
